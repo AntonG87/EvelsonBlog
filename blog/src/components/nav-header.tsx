@@ -25,15 +25,16 @@ export const NavHeader: React.FC<Props> = ({ className }) => {
       )}
     >
       <nav>
-        <ul className="flex gap-[65px]">
-          {navItems.map(({ label, path }) => {
+        <ul className="flex gap-[40px]">
+          {navItems.map(({ label, path },index) => {
             const isActive = pathname === path;           // или startsWith
             return (
-              <li key={path}>
+              <div key={index} className={'w-[124px] text-center'}>
+              <li  className={'w-full text-[20px]'}>
                 <Link
                   href={path}
                   className={clsx(
-                    'font-montserrat font-bold text-[20px] text-white transition',
+                    'font-montserrat font-bold  text-white transition',
                     'hover:text-indigo-800',
                     isActive &&
                     'bg-white/20  text-indigo-500 px-5 py-2 rounded-full shadow-md',
@@ -42,6 +43,7 @@ export const NavHeader: React.FC<Props> = ({ className }) => {
                   {label}
                 </Link>
               </li>
+              </div>
             );
           })}
         </ul>

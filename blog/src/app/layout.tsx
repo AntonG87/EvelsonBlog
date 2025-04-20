@@ -1,8 +1,8 @@
-import './globals.css';
+import './globals.css/';
 import { Fugaz_One, Montserrat, Fustat } from 'next/font/google';
 import {Header} from "@/components/header";
-import {Footer} from "@/components/footer";
 import React from "react";
+import {BackgroundBubbles} from "@/components/background-bubbles";
 
 
 const fugazOne = Fugaz_One({
@@ -29,7 +29,7 @@ export const metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function rootLayout({children}:{ children: React.ReactNode; }) {
   return (
     <html lang="en" className={`${fugazOne.variable} ${montserrat.variable} ${fustat.variable}`}>
     <body>
@@ -39,7 +39,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <main id="main" role="main">
       {children}
     </main>
-
     </body>
     </html>
   );

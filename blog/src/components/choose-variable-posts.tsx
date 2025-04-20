@@ -19,6 +19,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
+interface Props{
+className : string;
+}
+
 const sortSelection = [
   {
     value: "users",
@@ -34,18 +38,18 @@ const sortSelection = [
   },
 ]
 
-export function SortSelection() {
+export function SortSelection({className} : Props) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("all")
 
   return (
-    <Popover open={open} onOpenChange={setOpen} >
+    <Popover  open={open} onOpenChange={setOpen} >
       <PopoverTrigger asChild>
         <Button
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className={`w-[200px] ${className} cursor-pointer justify-between`}
         >
           {value
             ? sortSelection.find((sortSelection) => sortSelection.value === value)?.label
@@ -59,6 +63,7 @@ export function SortSelection() {
             <CommandGroup>
               {sortSelection.map((sortSelection) => (
                 <CommandItem
+                  className={'cursor-pointer'}
                   key={sortSelection.value}
                   value={sortSelection.value}
                   onSelect={(currentValue) => {

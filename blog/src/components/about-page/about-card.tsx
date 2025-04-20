@@ -9,7 +9,7 @@ export const AboutCard: React.FC<AboutCardProps> = ({ category, title, content }
   const isSkillsCategory = category === 'Skills';  // Проверяем, если категория Skills
 
   return (
-    <div className="rounded-[20px] overflow-hidden bg-white shadow-md transition hover:-translate-y-1 hover:shadow-lg">
+    <div className="rounded-[20px] overflow-hidden bg-white shadow-md hover:transform transition-transform duration-300 hover:scale-130 hover:shadow-lg">
       <div className={`flex items-center justify-center h-[120px] bg-[linear-gradient(to_right,#6753FF,#5954AA)]`}>
         <h1 className="font-fustat font-extrabold text-[64px] text-center text-white/30">{category}</h1>
       </div>

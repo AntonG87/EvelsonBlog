@@ -1,34 +1,51 @@
-import React from 'react';
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';          // по желанию
 
 interface Props {
   className?: string;
 }
 
+const navItems = [
+  { label: 'About',   path: '/about' },
+  { label: 'Home',    path: '/' },
+  { label: 'Contact', path: '/contact' },
+] as const;
+
 export const NavHeader: React.FC<Props> = ({ className }) => {
+  const pathname = usePathname();
+
   return (
-    <div className='w-full h-[85px] bg-[linear-gradient(to_right,#E1DFFF,#EDF2F7,#E1DFFF)] shadow-lg flex items-center justify-center'>
-       <nav>
-         <ul className="flex gap-[65px] justify-center ">
-           {["About", "Home", "Contact"].map((item) => (
-             <li key={item}>
-               <a
-                 href="#"
-                 className={`text-[#4B6DB7] text-[20px] ] hover:text-indigo-800 font-montserrat font-bold transition duration-200 ease-in-out
-                 ${item === "Home" ?
-                   // Дополнительные стили для активного пункта
-                   "bg-white text-indigo-500 px-5 py-2 rounded-full shadow-md"
-                   :
-                   ""
-                 }
-                 `
-               }
-               >
-                 {item}
-               </a>
-             </li>
-           ))}
-         </ul>
-       </nav>
+    <div
+      className={clsx(
+        ' h-[85px] flex items-center justify-center',
+        className,
+      )}
+    >
+      <nav>
+        <ul className="flex gap-[65px]">
+          {navItems.map(({ label, path }) => {
+            const isActive = pathname === path;           // или startsWith
+            return (
+              <li key={path}>
+                <Link
+                  href={path}
+                  className={clsx(
+                    'font-montserrat font-bold text-[20px] text-white transition',
+                    'hover:text-indigo-800',
+                    isActive &&
+                    'bg-white/20  text-indigo-500 px-5 py-2 rounded-full shadow-md',
+                  )}
+                >
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
     </div>
   );
 };

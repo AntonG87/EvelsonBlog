@@ -20,13 +20,13 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                                                         }) => {
   return (
     <div className="rounded-[20px] overflow-hidden bg-white shadow-md transition hover:-translate-y-1 hover:shadow-lg">
-      <div className={`flex items-center justify-center h-[150px] bg-gradient-to-r ${gradient}`} >
-        <h1 className={' font-fustat font-extrabold  text-[64px] text-center  text-gray-200/50'}>{desc}</h1>
+      <div className={`flex items-center justify-center h-[150px] bg-[linear-gradient(to_right,#675CFF,#5954AA)]`} >
+        <h1 className={' font-fustat font-extrabold  text-[64px] text-center  text-white/10'}>{desc}</h1>
       </div>
       <div className="p-5">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center gap-3">
-            <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${gradient}`} />
+            <div className={`w-10 h-10 rounded-full bg-[linear-gradient(to_right,#675CFF,#5954AA)]`} />
             <span className="text-sm font-semibold">{author}</span>
           </div>
           <span className="text-xs text-gray-400">{date}</span>

@@ -1,12 +1,22 @@
-import React from 'react';
-import { Button } from "@/components/ui/button"
+'use client';
+import * as React from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils'; // если у тебя есть этот helper
 
-interface Props {
-  className: string;
-}
+interface ShareButtonProps
+  extends React.ComponentPropsWithoutRef<typeof Button> {}
 
-export const ShareButton: React.FC<Props> = ({ className }) => {
-  return (
-    <Button variant="outline" className={className}>Write a Post</Button>
-  );
-};
+export const ShareButton = React.forwardRef<
+  HTMLButtonElement,
+  ShareButtonProps
+>(({ className, title, ...props }, ref) => (
+  <Button
+    ref={ref}
+    variant="outline"
+    className={cn(className)}
+    {...props}
+  >
+    {title}
+  </Button>
+));
+ShareButton.displayName = 'ShareButton';

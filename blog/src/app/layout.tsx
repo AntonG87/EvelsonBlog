@@ -1,5 +1,8 @@
 import './globals.css';
 import { Fugaz_One, Montserrat, Fustat } from 'next/font/google';
+import {Header} from "@/components/header";
+import {Footer} from "@/components/footer";
+import React from "react";
 
 
 const fugazOne = Fugaz_One({
@@ -23,12 +26,21 @@ const fustat = Fustat({
 export const metadata = {
   title: 'Evelson Blog',
   description: 'Blog about technology and life through the eyes of a developer',
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fugazOne.variable} ${montserrat.variable} ${fustat.variable}`}>
-    <body>{children}</body>
+    <body>
+    <header>
+      <Header/>
+    </header>
+    <main id="main" role="main">
+      {children}
+    </main>
+
+    </body>
     </html>
   );
 }

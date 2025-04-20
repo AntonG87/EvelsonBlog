@@ -1,0 +1,25 @@
+import React from 'react';
+import { AboutCard } from "@/components/about-page/about-card";
+
+interface Props {
+  className: string;
+  category: string;
+  title: string;
+  content:string | string[];
+}
+
+
+export const Education: React.FC<Props> = ({ className,
+                                             category,
+                                             title,
+                                             content}) => {
+  return (
+    <div className={className}>
+      <AboutCard
+        category={category}
+        title={title}
+        content={content}
+      />
+    </div>
+  );
+};

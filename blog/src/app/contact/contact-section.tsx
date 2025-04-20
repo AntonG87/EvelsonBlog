@@ -22,20 +22,20 @@ export const ContactSection = () => {
               href="https://www.linkedin.com/in/evelson/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-[#4a4a89] text-white px-6 py-3 rounded-xl hover:scale-105 transition-transform"
+              className="flex items-center gap-3 bg-[linear-gradient(to_right,#675CFF,#5954AA)] text-white px-6 py-3 rounded-xl hover:scale-105 transition-transform"
             >
               <FaLinkedin size={24} /> LinkedIn
             </a>
             <a
               href="mailto:evelsonanton@gmail.com"
-              className="flex items-center gap-3 bg-[#4a4a89] text-white px-6 py-3 rounded-xl hover:scale-105 transition-transform">
+              className="flex items-center gap-3 bg-[linear-gradient(to_right,#675CFF,#5954AA)] text-white px-6 py-3 rounded-xl hover:scale-105 transition-transform">
               <SiGmail size={24} /> Gmail
             </a>
             <a
               href="https://github.com/AntonG87"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-[#4a4a89] text-white px-6 py-3 rounded-xl hover:scale-105 transition-transform"
+              className="flex items-center gap-3 bg-[linear-gradient(to_right,#675CFF,#5954AA)] text-white px-6 py-3 rounded-xl hover:scale-105 transition-transform"
             >
               <FaGithub size={24} /> GitHub
             </a>

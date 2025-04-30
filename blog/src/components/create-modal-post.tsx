@@ -42,7 +42,7 @@ export const CreateModalPost = ({tabValue, handleTabChange, isPreviewAllowed, fu
           {/* Create */}
           <TabsContent value="create" className="flex cursor-pointer flex-col h-full">
             <DialogHeader>
-              <DialogTitle className="text-2xl font-bold mb-6">
+              <DialogTitle className="text-2xl max-sm:text-xl font-bold mb-6">
                 Create something interesting ✨
               </DialogTitle>
             </DialogHeader>
@@ -82,10 +82,10 @@ export const CreateModalPost = ({tabValue, handleTabChange, isPreviewAllowed, fu
 
 
             <div>
-              {!isPreviewAllowed ? <p className="text-sm text-center text-gray-500 mt-2">
+              {!isPreviewAllowed ? <p className="text-sm max-sm:text-[10px] text-center text-gray-500 mt-2">
                 To continue, please enter your full name (first and last), add a title for your post, and write the content.
                 Once everything is filled out, the “Create” and “Preview” buttons will be unlocked 😊
-              </p> : <p className="text-sm text-center text-gray-500 mt-2">
+              </p> : <p className="text-sm text-center max-sm:text-[12px] text-gray-500 mt-2">
                 Great job! All fields are filled in — you can now continue and share your post 🎉
               </p>}
 

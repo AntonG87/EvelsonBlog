@@ -1,8 +1,9 @@
 import React from 'react';
-import {AboutMe} from "@/components/about-page/about-me";
-import {Skills} from "@/components/about-page/skills";
-import {Education} from "@/components/about-page/eductaion";
-import {Experience} from "@/components/about-page/experience";
+import {
+  AboutMe,
+  Skills,
+  Education,
+  Experience} from "@/components/about-page";
 
 interface Props {
   className: string;

@@ -9,13 +9,12 @@ import {
   DialogTitle,
   DialogFooter,
 } from '@/components/ui/dialog';
-
 import {useRouter} from "next/navigation";
 
-interface Props {}
 
 
-export const CreateModalPostAdmin: React.FC<Props> = () => {
+
+export const CreateModalPostAdmin = () => {
   const [fullName, setFullName] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -52,6 +51,7 @@ export const CreateModalPostAdmin: React.FC<Props> = () => {
           title,
           password,
           content,
+          role: 'admin',
           author: fullName,
         }),
         headers: {

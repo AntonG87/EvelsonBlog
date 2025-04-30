@@ -7,14 +7,14 @@ export default async function ReadPostLayout({
                                                params,
                                              }: {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: number }>;
 }) {
 
-  const post: Post | null = await getPostById(params.id);
+  const { id } = await params;
+  const post: Post | null = await getPostById(id);
 
   return (
     <>
-
       {children}
       {post && <ReadPostModal post={post} />}
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {AboutCard} from "@/components/about-page/about-card";
+import {AboutCard} from "@/components/about-page";
 
 interface Props {
   className: string;

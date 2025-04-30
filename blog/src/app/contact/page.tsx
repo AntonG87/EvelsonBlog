@@ -1,8 +1,6 @@
-
-import {Container} from "@/components/container";
+import {Container,BackgroundBubbles} from "@/components";
 import {ContactSection} from "@/components/contact-page/contact-section";
 import VideoPlayer from "@/components/contact-page/video-player";
-import {BackgroundBubbles} from "@/components/background-bubbles";
 import React from "react";
 
 
@@ -10,12 +8,12 @@ import React from "react";
 export default function About() {
   return (
     <>
-      <BackgroundBubbles className={'top-[22%] w-[100%]'} />
+      <BackgroundBubbles className={'top-[62%] max-sm:top-[34%] w-[100%]'} />
       <Container className={"max-w-[1140px] m-auto"}>
-        <div className={'p-6 '}>
+        <div className={'px-6'}>
           <VideoPlayer/>
-        </div>
         <ContactSection/>
+        </div>
       </Container>
     </>
   );

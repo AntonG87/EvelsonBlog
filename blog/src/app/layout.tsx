@@ -1,8 +1,8 @@
-import './globals.css/';
+import './globals.css';
 import { Fugaz_One, Montserrat, Fustat } from 'next/font/google';
-import {Header} from "@/components/header";
+import {Header} from "@/components";
 import React from "react";
-import {BackgroundBubbles} from "@/components/background-bubbles";
+
 
 
 const fugazOne = Fugaz_One({

@@ -4,18 +4,11 @@ import React, { useState, useEffect } from 'react';
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
 } from '@/components/ui/dialog';
 
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from '@/components/ui/tabs';
 import {useRouter} from "next/navigation";
+import {PostSubmissionSuccess} from "@/components/post-submission-success";
+import {CreateModalPost} from "@/components/create-modal-post";
 
 interface Props {
 
@@ -28,11 +21,22 @@ export const SharedModuleWindow: React.FC<Props> = () => {
   const [content, setContent] = useState('');
   const [tabValue, setTabValue] = useState('create');
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [postIsSubmitted, setPostIsSubmitted] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(''); // новое состояние для ошибок
+  const [isLoading, setIsLoading] = useState(false);
+
+
+
 
   const router = useRouter();
 
   const handleClose = () => {
-    router.back(); // ← Закрываем модалку при клике "вне" или на крестик
+    setIsDialogOpen(false);
+    setTimeout(() => {
+      router.back();
+      router.refresh();
+    }, 100);
   };
 
 
@@ -59,6 +63,9 @@ export const SharedModuleWindow: React.FC<Props> = () => {
 
 
   const handleCreatePost = async () => {
+    setIsLoading(true);
+    setErrorMessage('');
+
     try {
       const res = await fetch('/api/create-post', {
         method: 'POST',
@@ -66,122 +73,72 @@ export const SharedModuleWindow: React.FC<Props> = () => {
           title,
           content,
           author: fullName,
-          desc: 'User', // или можно добавить поле ввода
         }),
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
-      if (!res.ok) throw new Error('Failed to create post');
+      const data = await res.json();
 
-      // Успешно: закрываем модалку и обновляем
-      router.refresh();
-      handleClose(); // Закрывает модалку
+      if (!res.ok || !data.success) {
+        setErrorMessage(data.message || 'Error creating post.');
+        return;
+      }
+
+      setPostIsSubmitted(true);
+
     } catch (error) {
       console.error('❌ Error creating post:', error);
-      alert('Failed to create post');
+      setErrorMessage('Error connecting to server');
+    } finally {
+      setIsLoading(false);
     }
   };
+
+
+
 
   return (
     <Dialog open onOpenChange={(open) => {
       if (!open) handleClose();
     }}>
       <DialogContent className="max-w-[90vw] max-h-[90vh] bg-white rounded-2xl p-6 overflow-hidden">
-        <Tabs value={tabValue} onValueChange={handleTabChange} className="w-full mt-6 h-full flex flex-col">
-          {/* Вкладки */}
-          <TabsList className="grid w-full grid-cols-2 mb-3">
-            <TabsTrigger value="create">Create</TabsTrigger>
-            <TabsTrigger
-              value="preview"
-              className={!isPreviewAllowed ? 'pointer-events-none opacity-40 cursor-not-allowed' : ''}>
-              Preview
-            </TabsTrigger>
-          </TabsList>
-
-          {/* Create */}
-          <TabsContent value="create" className="flex cursor-pointer flex-col h-full">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold mb-6">
-                Create something interesting ✨
-              </DialogTitle>
-            </DialogHeader>
-
-            <input
-              type="text"
-              placeholder="Full Name*"
-              maxLength={35}
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              className="w-full p-3 mb-4 border rounded-lg text-sm"
-            />
-
-            <input
-              type="text"
-              placeholder="Title*"
-              maxLength={55}
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full p-3 mb-4 border rounded-lg text-sm"
-            />
-
-            <div className="text-right text-xs text-gray-500 mt-1">{content.length} / 900
-            </div>
-            <textarea
-              placeholder="Your content..."
-              value={content}
-              onChange={(e) => {
-                const value = e.target.value;
-                if (value.length <= 900) {
-                  setContent(value);
-                }
-              }}
-              className="w-full min-h-[150px] max-h-[250px] p-3 border rounded-lg text-sm resize-none"
-            />
-
-
-
-            <div>
-              {!isPreviewAllowed ? <p className="text-sm text-center text-gray-500 mt-2">
-                To continue, please enter your full name (first and last), add a title for your post, and write the content.
-                Once everything is filled out, the “Create” and “Preview” buttons will be unlocked 😊
-              </p> : <p className="text-sm text-center text-gray-500 mt-2">
-                Great job! All fields are filled in — you can now continue and share your post 🎉
-              </p>}
-
-            </div>
-
-            <DialogFooter className="mt-6">
-              <button
-                type="button"
-                onClick={handleCreatePost}
-                disabled={!isPreviewAllowed}
-                className={`w-full py-2 font-semibold rounded-full transition ${
-                  isPreviewAllowed
-                    ? 'bg-gradient-to-r from-[#675CFF] to-[#615EC5] text-white hover:opacity-90'
-                    : 'bg-gradient-to-r from-gray-400 to-gray-500 text-white cursor-not-allowed'
-                }`}
-              >
-                Create
-              </button>
-            </DialogFooter>
-          </TabsContent>
-
-          {/* Preview */}
-          <TabsContent
-            value="preview"
-            className="flex-grow overflow-y-auto max-h-[600px] pr-2">
-            <div className="w-full bg-gradient-to-b min-h-[400px] from-[#675CFF] to-[#615EC5] text-white p-10 rounded-xl overflow-auto">
-              <p className="text-sm mb-2 break-words">🔘 {fullName}</p>
-              <h2 className="text-2xl font-bold mb-4 break-words">{title}</h2>
-              <p className="text-sm leading-relaxed text-white/90 whitespace-pre-line break-words">
-                {content}
-              </p>
-            </div>
-          </TabsContent>
-        </Tabs>
+        {isLoading ? (
+          <div className="flex flex-col items-center justify-center h-full text-center">
+            <div className="animate-spin rounded-full border-4 border-t-transparent border-blue-500 w-12 h-12 mb-6"></div>
+            <p className="text-gray-800 text-lg font-medium">We are checking your post...</p>
+          </div>
+        ) : postIsSubmitted ? (
+          <PostSubmissionSuccess/>
+        ) : errorMessage ? (
+          <div className="flex flex-col items-center justify-center text-center">
+            <h2 className="text-2xl font-semibold text-red-600 mb-4">ERROR</h2>
+            <img src="error.svg" alt="error" className={'max-w-[400px]'}/>
+            <p className="text-xl font-medium font-fustat text-gray-700">{errorMessage}</p>
+            <button
+              onClick={handleClose}
+              className="mt-6 px-4 py-2 bg-[linear-gradient(to_right,#675CFF,#5954AA)] text-white rounded hover:scale-105 transition"
+            >
+              Вернуться назад
+            </button>
+          </div>
+        ) : (
+          <CreateModalPost
+            fullName={fullName}
+            handleClose={handleClose}
+            setFullName={setFullName}
+            title={title}
+            setTitle={setTitle}
+            content={content}
+            setContent={setContent}
+            isPreviewAllowed={isPreviewAllowed}
+            tabValue={tabValue}
+            handleTabChange={handleTabChange}
+            handleCreatePost={handleCreatePost}
+          />
+        )}
       </DialogContent>
     </Dialog>
   );
-};
+}

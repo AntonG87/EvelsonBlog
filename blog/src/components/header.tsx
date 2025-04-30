@@ -1,10 +1,6 @@
-"use client"
+"use client";
 import React from 'react';
-import { Logo } from "@/components/logo";
-import { NavHeader } from "@/components/nav-header";
-import { LogoText } from "@/components/logo-text";
-import { Container } from "@/components/container";
-import { SvgVolna } from "@/components/svg-volna";
+import { Logo ,NavHeader, LogoText, Container, SvgVolna,} from "@/components";
 import { usePathname } from "next/navigation";
 
 interface Props {
@@ -16,21 +12,21 @@ export const Header: React.FC<Props> = ({ className }) => {
 
   return (
     <div>
-      <div className="w-full h-[370px] bg-[linear-gradient(to_right,#675CFF,#5954AA)] flex items-center justify-center relative">
+      <div className=" w-full h-[370px] bg-[linear-gradient(to_right,#675CFF,#5954AA)] flex max-md:h-[300px] items-center justify-center  relative">
         <Container className="w-full max-w-screen-xl mx-auto">
-          <div className="w-full h-[50%] flex items-center mb-[50px] justify-between">
-            <div className="w-[550px] h-max">
-              <Logo />
+          <div className="w-full px-4 h-[50%] flex max-lg:block items-center mb-[50px] max-sm:mb-[2px] justify-between">
+            <div className="w-[550px] max-lg:w-full h-max text-center ">
+              <Logo className={''}/>
               <LogoText />
             </div>
-            <NavHeader />
+            <div className="w-full sm:w-auto mt-4 sm:mt-0">
+              <NavHeader />
+            </div>
           </div>
         </Container>
 
         {/* Условный рендеринг SVG, если не главная страница */}
-
         {pathname !== '/' && pathname !== '/create-post' && <SvgVolna />}
-
       </div>
     </div>
   );

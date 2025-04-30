@@ -1,18 +1,16 @@
-
-
 import Image from 'next/image';
 import {ContactsLinks} from "@/components/contact-page/contacts-links";
 
 export const ContactSection = () => {
   return (
-    <section className="relative z-10 w-full py-20">
-      <div className="max-w-full flex flex-col-reverse lg:flex-row justify-between gap-20">
+    <section className="relative z-10 w-full py-20 ">
+      <div className="max-w-full flex flex-col-reverse lg:flex-row justify-between gap-20 max-sm:gap-5">
         {/* Text and Links */}
         <div className="flex-1">
-          <h2 className="text-[32px] font-extrabold font-fustat text-[#4B50A2]">
+          <h2 className="text-[32px] max-sm:text-[22px] font-extrabold font-fustat text-[#4B50A2]">
             Let’s connect and <br /> create something great
           </h2>
-          <p className="text-[#4B50A2] text-lg mb-8">
+          <p className="text-[#4B50A2] text-lg max-sm:text-[12px] mb-8">
             Feel free to reach out via any of the platforms below. I’m always open to discuss ideas, collaborations, or just talk tech.
           </p>
           <ContactsLinks />

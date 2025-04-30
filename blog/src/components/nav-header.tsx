@@ -25,12 +25,12 @@ export const NavHeader: React.FC<Props> = ({ className }) => {
       )}
     >
       <nav>
-        <ul className="flex gap-[40px]">
+        <ul className="flex gap-[40px] relative z-10  max-sm:gap-[0px] ">
           {navItems.map(({ label, path },index) => {
             const isActive = pathname === path;           // или startsWith
             return (
               <div key={index} className={'w-[124px] text-center'}>
-              <li  className={'w-full text-[20px]'}>
+              <li  className={'w-full text-[20px] max-sm:text-[14px] '}>
                 <Link
                   href={path}
                   className={clsx(

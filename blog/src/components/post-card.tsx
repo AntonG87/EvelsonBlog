@@ -4,30 +4,30 @@ import Link from "next/link";
 
 interface ArticleCardProps {
   author: string;
-  date: any;
+  date: string;
   title: string;
   content: string;
   gradient?: string;
   showButton?: boolean;
-  desc?: string;
-  id: string;
+  role: string;
+  id: number;
 }
 
 export const PostCard: React.FC<ArticleCardProps> = ({
                                                        author,
-                                                       desc,
                                                        date,
                                                        title,
                                                        content,
                                                        id,
+                                                       role
                                                      }) => {
 
   const shouldShowButton = content.length > 160;
 
   return (
-    <div className="rounded-[20px] min-w-[510px] max-[420px] overflow-hidden bg-white shadow-md transition hover:-translate-y-1 hover:shadow-lg">
-      <div className={`flex items-center justify-center h-[150px] bg-[linear-gradient(to_right,#675CFF,#5954AA)]`}>
-        <h1 className="font-fustat font-extrabold text-[64px] text-center text-white/10">{desc}</h1>
+    <div className="rounded-[20px] max-md:mx-auto max-w-[500px]   w-full   overflow-hidden bg-white shadow-md transition hover:-translate-y-1 hover:shadow-lg">
+      <div className={`flex items-center justify-center h-[150px] max-sm:h-[100px] bg-[linear-gradient(to_right,#675CFF,#5954AA)]`}>
+        <h1 className="font-fustat font-extrabold text-[64px] max-sm:text-[40px] text-center text-white/10">{role === 'admin'? 'Author' : ''}</h1>
       </div>
       <div className="p-5 grid">
         <div className="flex justify-between items-center mb-4 gap-4">
@@ -44,7 +44,7 @@ export const PostCard: React.FC<ArticleCardProps> = ({
           </div>
         </div>
         <h3 className="text-lg font-fustat font-semibold mb-2">{title}</h3>
-          <p className="text-xl text-gray-500 mb-4  text-muted-foreground line-clamp-3">
+          <p className="text-xl max-sm:text-sm text-gray-500 mb-4  text-muted-foreground line-clamp-3">
           {content}
         </p>
 

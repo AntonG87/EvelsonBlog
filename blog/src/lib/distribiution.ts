@@ -10,9 +10,17 @@ const prisma = new PrismaClient();
 
 export async function postDistribution(newPost: Post) {
 
-  const title = 'New post in Evelson Blog ';
-  const content = 'New post from Author of the blog Anton Evelson'
-  const html = `<p>Visit our <a href="https://evelson.blog">website</a>to view the latest post from Blog Author Anton Evelson. Have a great time and thank you for your attention!</p>`
+  const title = 'New blog post from Anton Evelson – check it out!';
+  const html = `
+  <p>Hello!</p>
+  <p>We’ve just published a new post on <strong>Evelson Blog</strong>.</p>
+  <p>
+    Visit our <a href="https://evelson.blog" target="_blank" rel="noopener noreferrer">website</a>
+    to read the latest post from blog author <strong>Anton Evelson</strong>.
+  </p>
+  <p>Thank you for subscribing and have a great day!</p>
+  <img src="https://sendsay.ru/blog/storage/2022/05/21/052a85dbc4007e03efbc0963c0888fe269334795.png" alt="logo">
+`;
 
   // получение активных объектов подписчиков
   const subscribers = await prisma.subscriber.findMany({

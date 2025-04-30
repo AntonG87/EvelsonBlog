@@ -27,7 +27,7 @@ export const ReadPostModal = ({ post }: { post: Post }) => {
         <div className="rounded-[20px] w-full max-w-screen-lg overflow-hidden bg-white shadow-md transition-all duration-300 ease-in-out">
           <div className="flex items-center justify-center h-[120px] bg-[linear-gradient(to_right,#675CFF,#5954AA)]">
             <h1 className="font-fustat font-extrabold text-[64px] text-center text-white/10">
-              {post.desc}
+              {post.role === 'admin' ? 'Author' : ''}
             </h1>
           </div>
           <div className="p-5 grid">

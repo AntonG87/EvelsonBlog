@@ -8,7 +8,7 @@ export const GoToPostsButton: React.FC<Props> = ({ className }) => {
   const scrollToPosts = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({behavior: 'smooth', block: 'center'});
+      section.scrollIntoView({behavior: 'smooth', block: 'start'});
     }
   };
   return (

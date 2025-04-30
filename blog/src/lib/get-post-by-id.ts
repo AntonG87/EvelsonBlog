@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-export async function getPostById(id: string) {
+export async function getPostById(id: number) {
   try {
     const numericId = Number(id);
 

@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+import {Post, PrismaClient} from '@prisma/client';
 const prisma = new PrismaClient();
 
 export async function getPosts() {
   try {
-    const posts = await prisma.post.findMany({
+    const posts :Post[] = await prisma.post.findMany({
       orderBy: {
         createdAt: 'desc',
       },

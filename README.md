@@ -25,7 +25,7 @@ It showcases skills in UI development, backend architecture, API design, role-ba
 
 - 📝 Post creation with AI moderation
 - 🔐 Role-based access: user / author / admin
-- 📬 Email distribution to new subscribers
+- 📬 Email distribution to all subscribers
 - 🎨 Modern, responsive UI
 - 🗂️ Pagination and post filtering
 - 📌 Modal windows, tabs, animations

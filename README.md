@@ -108,5 +108,5 @@ Crafted with ❤️ by Anton Evelson.
 
 ## 📬 Contact
 
-- LinkedIn: [linkedin.com/in/antongruzdev](https://linkedin.com/in/antongruzdev)
-- Telegram: [@evelson_dev](https://t.me/evelson_dev)
+- LinkedIn: [linkedin.com/in/antongruzdev](https://linkedin.com/in/evelson)
+- Telegram: [@evelson_dev](https://t.me/evelsonwrs)

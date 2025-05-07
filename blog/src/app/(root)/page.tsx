@@ -16,7 +16,7 @@ export default function Home() {
       <main className="flex-1 flex flex-col">
         <SpotlightSection />
         <BackgroundBubbles className={'top-[122%] max-sm:top-[155%] max-md:top-[100%] w-[100%]'} />
-        <BackgroundBubbles className={'w-[100%] max-sm:top-[4%]'} />
+        <BackgroundBubbles className={'w-[100%] top-[-10%]  max-sm:top-[5%] '} />
         <Container className="flex flex-col px-10 flex-1 max-w-full sm:max-w-[1140px] m-auto  sm:px-6 lg:px-10">
           <ShareThoughtsButton className={'relative z-10 rounded-[25px] w-[100%] h-[185px]  bg-[linear-gradient(to_right,#675CFF,#615EC5)]'}/>
           <Suspense fallback={<div>Loading of Posts...</div>}>

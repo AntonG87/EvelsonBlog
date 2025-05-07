@@ -8,7 +8,7 @@ import React from "react";
 export default function About() {
   return (
     <>
-      <BackgroundBubbles className={'top-[62%] max-sm:top-[34%] w-[100%]'} />
+      <BackgroundBubbles className={'top-[22%] max-sm:top-[34%] w-[100%]'} />
       <Container className={"max-w-[1140px] m-auto"}>
         <div className={'px-6'}>
           <VideoPlayer/>

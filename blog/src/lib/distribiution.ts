@@ -15,6 +15,11 @@ export async function postDistribution(newPost: Post) {
   <p>Hello!</p>
   <p>We’ve just published a new post on <strong>Evelson Blog</strong>.</p>
   <p>
+   Welcome to all our subscribers! This is our first post dedicated to the implementation of the project.
+   We are excited to share the results with you and thank each of you for your support and interest.
+   We believe this project will be useful and engaging for anyone interested in web development and new technologies.
+  </p>
+  <p>
     Visit our <a href="https://evelson.blog" target="_blank" rel="noopener noreferrer">website</a>
     to read the latest post from blog author <strong>Anton Evelson</strong>.
   </p>

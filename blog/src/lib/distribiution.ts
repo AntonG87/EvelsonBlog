@@ -49,7 +49,8 @@ export async function postDistribution(newPost: Post) {
   try {
     await resend.emails.send({
       from: `EvelsonBlog@${DOMAIN_NAME}`,
-      to: emailList,
+      to: `EvelsonBlog@${DOMAIN_NAME}`, // отправляешь сам себе
+      bcc: emailList,                   // рассылка остальным — скрыта
       subject: title,
       html: html,
     });

@@ -101,14 +101,14 @@ export const CreateModalPostAdmin = () => {
               className="w-full p-3 mb-4 border rounded-lg text-sm"
             />
 
-            <div className="text-right text-xs text-gray-500 mt-1">{content.length} / 900
+            <div className="text-right text-xs text-gray-500 mt-1">{content.length} / 1200
             </div>
             <textarea
               placeholder="Your content..."
               value={content}
               onChange={(e) => {
                 const value = e.target.value;
-                if (value.length <= 900) {
+                if (value.length <= 1200) {
                   setContent(value);
                 }
               }}

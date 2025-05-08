@@ -120,7 +120,7 @@ export const SharedModuleWindow: React.FC<Props> = () => {
               onClick={handleClose}
               className="mt-6 px-4 py-2 bg-[linear-gradient(to_right,#675CFF,#5954AA)] text-white rounded hover:scale-105 transition"
             >
-              Вернуться назад
+              go back
             </button>
           </div>
         ) : (

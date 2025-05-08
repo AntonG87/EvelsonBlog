@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     }
 
     if (role === "user") {
-      if (content.length > 900) {
+      if (content.length > 1200) {
         return new Response(JSON.stringify({ success: false, message: 'Content exceeds maximum length (900 characters)' }), { status: 400 });
       }
       if (author.length > 55) {
